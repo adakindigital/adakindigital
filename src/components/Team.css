@@ -1,0 +1,56 @@
+.team-section {
+    background-color: var(--bg-dark);
+    padding-bottom: 100px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.team-card {
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    transition: border-color 0.3s ease;
+    min-height: 200px; /* Added minimum height for balance */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.team-card:hover {
+    border-color: var(--accent-primary);
+}
+
+.member-role {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.member-name {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: auto; /* Push arrow to bottom if flex */
+}
+
+/* Social or Detail link arrow */
+.team-link {
+    margin-top: 1.5rem;
+    display: inline-block;
+    color: var(--accent-primary);
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.team-card:hover .team-link {
+    opacity: 1;
+    transform: translateX(0);
+}
