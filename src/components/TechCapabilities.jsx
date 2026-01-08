@@ -8,15 +8,15 @@ gsap.registerPlugin(ScrollTrigger);
 const TechCapabilities = () => {
     const sectionRef = useRef(null);
     const counterRefs = useRef([]);
-    
+
     useEffect(() => {
         // Animate counters
         counterRefs.current.forEach((el, index) => {
             if (!el) return;
             const endValue = parseInt(el.getAttribute('data-target'), 10);
-            
-            gsap.fromTo(el, 
-                { innerText: 0 }, 
+
+            gsap.fromTo(el,
+                { innerText: 0 },
                 {
                     innerText: endValue,
                     duration: 2,
@@ -75,19 +75,19 @@ const TechCapabilities = () => {
                     <div className="tech-item tech-item-md">
                         <div className="tech-label">Projects Shipped</div>
                         <div className="tech-value">
-                            <span ref={el => counterRefs.current[1] = el} data-target="50">0</span>+
+                            <span ref={el => counterRefs.current[1] = el} data-target="5">0</span>
                         </div>
                         <div className="tech-desc">Successful deployments across fintech, healthcare, and logistics.</div>
                     </div>
-                    
+
                     {/* Item 4: Tech Stack */}
                     <div className="tech-item tech-item-lg">
                         <div className="tech-label">Tech Stack</div>
                         <div className="tech-desc">
-                            React / Next.js • Node.js • Python • AWS • Docker • Kubernetes • GraphQL • PostgreSQL
+                            .NET • Flutter • React / Next.js • Node.js • Python • AWS • Docker • GraphQL • PostgreSQL
                         </div>
-                        <div className="tech-desc" style={{marginTop: 'auto', fontSize: '0.9rem', opacity: 0.7}}>
-                           Focusing on the right tool for the job, not the hype.
+                        <div className="tech-desc" style={{ marginTop: 'auto', fontSize: '0.9rem', opacity: 0.7 }}>
+                            Focusing on the right tool for the job, not the hype.
                         </div>
                     </div>
                 </div>
