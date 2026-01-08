@@ -14,10 +14,6 @@ const team = [
     {
         name: 'Papa Mabotja',
         role: 'Co-Founder',
-    },
-    {
-        name: 'Cowan Kinlock',
-        role: 'Co-Founder',
     }
 ];
 
