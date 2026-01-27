@@ -6,6 +6,7 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background-color: var(--bg-dark);
 }
 
 .hero-bg {
@@ -15,7 +16,8 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    opacity: 0.4;
+    opacity: 0.3;
+    filter: saturate(1.2);
 }
 
 .hero-overlay {
@@ -24,7 +26,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, transparent 0%, var(--bg-dark) 90%);
+    background: radial-gradient(circle at center, transparent 0%, var(--bg-dark) 85%);
     z-index: 2;
 }
 
@@ -35,17 +37,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 900px;
+    padding: 0 1rem;
 }
 
 .hero h1 {
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
+    margin-bottom: 2rem;
+    line-height: 1;
 }
 
 .hero-sub {
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin-bottom: 3rem;
+    font-size: 1.35rem;
+    max-width: 650px;
+    margin-bottom: 3.5rem;
+    color: var(--text-secondary);
+    font-weight: 300;
 }
 
 .hero-cta {
@@ -53,14 +59,30 @@
     gap: 1.5rem;
 }
 
+/* Optional glow effect behind text */
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    background: var(--color-primary);
+    filter: blur(150px);
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+}
+
 @media (max-width: 768px) {
     .hero-cta {
         flex-direction: column;
         width: 100%;
-        max-width: 300px;
+        max-width: 320px;
     }
 
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 }

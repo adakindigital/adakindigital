@@ -5,14 +5,15 @@
     width: 100%;
     padding: 2rem 0;
     z-index: 1000;
-    transition: padding 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease;
+    transition: padding 0.3s var(--ease-in-out), background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .navbar.scrolled {
     padding: 1rem 0;
-    background: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(7, 16, 19, 0.85);
+    /* brand dark with opacity */
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .navbar-content {
@@ -22,43 +23,55 @@
 }
 
 .logo {
+    font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.05em;
     color: var(--text-primary);
     z-index: 1002;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--color-primary);
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: center;
 }
 
 .nav-links a {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
     color: var(--text-secondary);
     transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: var(--text-primary);
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--color-primary);
 }
 
 .btn-small {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--text-primary);
-    color: var(--text-primary);
+    padding: 0.6rem 1.25rem;
+    border: 1px solid var(--border-color);
+    color: var(--color-primary);
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
+    font-family: var(--font-heading);
+    font-weight: 600;
     transition: all 0.3s ease;
+    border-radius: 4px;
 }
 
 .btn-small:hover {
-    background: var(--text-primary);
+    background: var(--color-primary);
     color: var(--bg-dark);
+    box-shadow: 0 0 15px var(--border-glow);
+    border-color: var(--color-primary);
 }
 
 .mobile-toggle {
@@ -94,6 +107,7 @@
     }
 
     .nav-links a {
-        font-size: 1.5rem;
+        font-size: 2rem;
+        font-family: var(--font-heading);
     }
 }

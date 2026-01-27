@@ -9,9 +9,9 @@ import Team from './components/Team';
 import './index.css';
 
 const Footer = () => (
-  <footer style={{ padding: '4rem 0', textAlign: 'center', borderTop: '1px solid #222', color: '#666' }}>
+  <footer className="footer">
     <div className="container">
-      <p>&copy; {new Date().getFullYear()} Adakin Digital. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} Adakin Digital. Product Studio.</p>
     </div>
   </footer>
 );
