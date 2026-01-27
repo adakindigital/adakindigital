@@ -1,88 +1,263 @@
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     position: relative;
     overflow: hidden;
     background-color: var(--bg-dark);
+    padding: 120px 0 80px;
 }
 
+/* Background Effects */
 .hero-bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.3;
-    filter: saturate(1.2);
+    inset: 0;
+    z-index: 0;
 }
 
-.hero-overlay {
+.hero-gradient {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, transparent 0%, var(--bg-dark) 85%);
-    z-index: 2;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 50% at 70% 20%, rgba(73, 198, 229, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(73, 198, 229, 0.05) 0%, transparent 50%);
 }
 
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(73, 198, 229, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(73, 198, 229, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 20%, transparent 70%);
+}
+
+.hero-glow {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(73, 198, 229, 0.15) 0%, transparent 60%);
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+/* Content Layout */
 .hero-content {
     position: relative;
-    z-index: 3;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
-    max-width: 900px;
-    padding: 0 1rem;
+    gap: 4rem;
 }
 
+.hero-text {
+    max-width: 800px;
+}
+
+/* Typography */
 .hero h1 {
     margin-bottom: 2rem;
-    line-height: 1;
+    line-height: 1.05;
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    perspective: 1000px;
+}
+
+.title-line {
+    display: block;
+    transform-origin: left center;
+}
+
+.title-accent {
+    color: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-sub {
-    font-size: 1.35rem;
-    max-width: 650px;
-    margin-bottom: 3.5rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    max-width: 580px;
+    margin-bottom: 3rem;
     color: var(--text-secondary);
-    font-weight: 300;
+    font-weight: 400;
+    line-height: 1.75;
 }
 
 .hero-cta {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
-/* Optional glow effect behind text */
-.hero-content::before {
-    content: '';
+/* Orbital Decoration */
+.hero-decoration {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    flex-shrink: 0;
+}
+
+.decoration-orbit {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.orbit-ring {
     position: absolute;
+    border: 1px solid rgba(73, 198, 229, 0.15);
+    border-radius: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
-    height: 300px;
+}
+
+.orbit-ring:nth-child(1) {
+    width: 100%;
+    height: 100%;
+    animation: orbit-rotate 30s linear infinite;
+}
+
+.orbit-ring:nth-child(2) {
+    width: 70%;
+    height: 70%;
+    animation: orbit-rotate 25s linear infinite reverse;
+}
+
+.orbit-ring:nth-child(3) {
+    width: 40%;
+    height: 40%;
+    border-color: rgba(73, 198, 229, 0.25);
+    animation: orbit-rotate 20s linear infinite;
+}
+
+.orbit-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
     background: var(--color-primary);
-    filter: blur(150px);
-    opacity: 0.15;
-    z-index: -1;
-    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow:
+        0 0 20px rgba(73, 198, 229, 0.5),
+        0 0 40px rgba(73, 198, 229, 0.3);
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes orbit-rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow:
+            0 0 20px rgba(73, 198, 229, 0.5),
+            0 0 40px rgba(73, 198, 229, 0.3);
+    }
+    50% {
+        box-shadow:
+            0 0 30px rgba(73, 198, 229, 0.7),
+            0 0 60px rgba(73, 198, 229, 0.4);
+    }
+}
+
+/* Scroll Indicator */
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.6;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--color-primary), transparent);
+    animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+    0%, 100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scaleY(0.6);
+        opacity: 0.5;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        text-align: center;
+    }
+
+    .title-line {
+        transform-origin: center center;
+    }
+
+    .hero-sub {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
+    .hero-decoration {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
+    .hero {
+        padding: 100px 0 100px;
+    }
+
     .hero-cta {
         flex-direction: column;
         width: 100%;
         max-width: 320px;
+        margin: 0 auto;
     }
 
     .hero h1 {
-        font-size: 3rem;
+        font-size: 2.25rem;
+    }
+
+    .hero-sub {
+        font-size: 1.05rem;
+    }
+
+    .hero-scroll-indicator {
+        bottom: 2rem;
     }
 }

@@ -1,102 +1,156 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FiArrowUpRight } from 'react-icons/fi';
 import './Work.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
+const products = [
     {
-        title: 'EntryFlow',
-        category: 'Cinematic Survey Platform',
-        desc: 'A visually immersive survey experience designed for maximum user engagement and retention.',
-        // link: 'https://www.entryflow.co.za',
-        status: 'Coming Soon',
-        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop'
+        title: 'Entryflow',
+        tagline: 'Customer onboarding & conversion infrastructure',
+        desc: 'A platform that transforms how businesses capture and convert leads through intelligent, cinematic survey experiences.',
+        status: 'live',
+        statusLabel: 'Live',
+        link: '/case-study/entryflow',
+        isInternal: true,
+        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop',
+        accentColor: '#10B981'
     },
     {
         title: 'Dwelly',
-        category: 'Property Management System',
+        tagline: 'Property & rental intelligence',
         desc: 'Comprehensive tenant, property, and rent collection system for modern landlords.',
-        status: 'Coming Soon',
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop'
+        status: 'dev',
+        statusLabel: 'In Development',
+        link: '/coming-soon/dwelly',
+        isInternal: true,
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop',
+        accentColor: '#3b82f6'
     },
     {
-        title: 'TradeTrackr',
-        category: 'Trading Analytics Platform',
+        title: 'Tradetrackr',
+        tagline: 'Trading insights & execution tools',
         desc: 'Advanced trade logging and performance analytics designed specifically for day traders.',
-        // link: 'https://www.tradeTrackr.co.za',
-        status: 'Coming Soon',
-        // Updated image: Reliable stock market chart with dark aesthetic
-        image: 'https://images.unsplash.com/photo-1640340434855-6084b1f4901c?q=80&w=2560&auto=format&fit=crop'
+        status: 'dev',
+        statusLabel: 'In Development',
+        link: '/coming-soon/tradetrackr',
+        isInternal: true,
+        image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2670&auto=format&fit=crop',
+        accentColor: '#f59e0b'
     },
     {
         title: 'Next Innovation',
-        category: 'R&D',
-        desc: 'Our team is currently building the next generation of digital tools.',
-        status: 'Coming Soon',
-        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop'
+        tagline: 'Something new is brewing',
+        desc: "We're constantly exploring new problems worth solving. Our next creation is in the works.",
+        status: 'dev',
+        statusLabel: 'Research Phase',
+        link: '/coming-soon/next-innovation',
+        isInternal: true,
+        isPlaceholder: true,
+        accentColor: '#8b5cf6'
     }
 ];
 
 const Work = () => {
     const sectionRef = useRef(null);
+    const headerRef = useRef(null);
     const itemsRef = useRef([]);
 
     useEffect(() => {
-        // Stagger Reveal
-        gsap.fromTo(itemsRef.current,
-            { y: 100, opacity: 0 },
+        // Header animation
+        gsap.fromTo(headerRef.current.querySelectorAll('.animate-in'),
+            { y: 40, opacity: 0 },
             {
                 y: 0,
                 opacity: 1,
-                duration: 1,
-                stagger: 0.2,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: headerRef.current,
+                    start: 'top 85%',
+                }
+            }
+        );
+
+        // Cards animation
+        gsap.fromTo(itemsRef.current,
+            { y: 60, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.12,
                 ease: 'power3.out',
                 scrollTrigger: {
                     trigger: sectionRef.current,
-                    start: 'top 80%',
+                    start: 'top 75%',
                 }
             }
         );
     }, []);
 
+    const getStatusClass = (status) => {
+        switch (status) {
+            case 'live': return 'status-badge status-live';
+            case 'beta': return 'status-badge status-beta';
+            case 'dev': return 'status-badge status-dev';
+            default: return 'status-badge';
+        }
+    };
+
     return (
-        <section id="work" className="section work-section" ref={sectionRef}>
+        <section id="products" className="section products-section" ref={sectionRef}>
             <div className="container">
-                <h2 className="section-title">Selected Work</h2>
-                <div className="work-grid">
-                    {projects.map((project, index) => {
-                        const CardTag = project.link ? 'a' : 'div';
-                        return (
-                            <CardTag
-                                key={index}
-                                className="work-item"
-                                ref={el => itemsRef.current[index] = el}
-                                href={project.link}
-                                target={project.link ? "_blank" : undefined}
-                                rel={project.link ? "noopener noreferrer" : undefined}
-                            >
+                <div className="products-header" ref={headerRef}>
+                    <span className="section-label animate-in">Our Products</span>
+                    <h2 className="animate-in">Built. Operated. <span className="text-gradient">Proven.</span></h2>
+                    <p className="products-intro animate-in">
+                        We don't just build for clients — we build products we believe in and operate ourselves.
+                        This is how we stay sharp.
+                    </p>
+                </div>
+
+                <div className="products-grid">
+                    {products.map((product, index) => (
+                        <Link
+                            key={index}
+                            to={product.link}
+                            className={`product-item ${product.isPlaceholder ? 'product-placeholder' : ''}`}
+                            ref={el => itemsRef.current[index] = el}
+                            style={{ '--accent': product.accentColor }}
+                        >
+                            {!product.isPlaceholder && (
                                 <div
-                                    className="work-image"
-                                    style={{ backgroundImage: `url(${project.image})` }}
-                                >
-                                    {project.status && (
-                                        <div className="work-status-badge">{project.status}</div>
-                                    )}
+                                    className="product-image"
+                                    style={{ backgroundImage: `url(${product.image})` }}
+                                />
+                            )}
+                            <div className="product-overlay"></div>
+
+                            <div className="product-content">
+                                <div className="product-top">
+                                    <span className={getStatusClass(product.status)}>
+                                        {product.statusLabel}
+                                    </span>
                                 </div>
-                                <div className="work-overlay"></div>
-                                <div className="work-content">
-                                    <div className="work-cat">{project.category}</div>
-                                    <h3 className="work-title">
-                                        {project.title}
-                                        {project.link && <span className="work-arrow">↗</span>}
+
+                                <div className="product-bottom">
+                                    <span className="product-tagline">{product.tagline}</span>
+                                    <h3 className="product-title">
+                                        {product.title}
+                                        <FiArrowUpRight className="product-arrow" />
                                     </h3>
-                                    <p className="work-desc">{project.desc}</p>
+                                    <p className="product-desc">{product.desc}</p>
                                 </div>
-                            </CardTag>
-                        );
-                    })}
+                            </div>
+
+                            <div className="product-hover-border"></div>
+                        </Link>
+                    ))}
                 </div>
             </div>
         </section>

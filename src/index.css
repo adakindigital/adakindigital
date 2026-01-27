@@ -3,27 +3,24 @@
 :root {
   /* Brand Palette */
   --color-primary: #49c6e5;
-  /* Sky Aqua */
   --color-primary-light: #54defd;
-  /* Sky Aqua 2 */
+
+  /* Status Colors */
+  --status-live: #22c55e;
+  --status-beta: #f59e0b;
+  --status-dev: #3b82f6;
 
   --bg-dark: #071013;
-  /* Ink Black */
   --bg-card: #0a1418;
-  /* Slightly lighter for cards */
   --bg-light: #fffbfa;
-  /* Snow */
 
   --text-primary: #fffbfa;
-  /* Snow (on dark) */
   --text-secondary: #889096;
-  /* Muted/Slate */
   --text-dark: #333745;
-  /* Jet Black (on light) */
 
   --border-color: rgba(73, 198, 229, 0.15);
-  /* Sky Aqua low opacity */
   --border-glow: rgba(73, 198, 229, 0.5);
+  --border-subtle: rgba(255, 255, 255, 0.08);
 
   /* Typography */
   --font-heading: 'Outfit', sans-serif;
@@ -41,6 +38,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-dark);
   color: var(--text-primary);
@@ -48,6 +49,11 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(73, 198, 229, 0.3);
+  color: var(--text-primary);
 }
 
 a {
@@ -103,6 +109,56 @@ ul {
 
 .mono-text {
   font-family: var(--font-mono);
+}
+
+/* Section Label - Industrial Editorial Style */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.status-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-live {
+  color: var(--status-live);
+  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.status-beta {
+  color: var(--status-beta);
+  border-color: rgba(245, 158, 11, 0.3);
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.status-dev {
+  color: var(--status-dev);
+  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.1);
 }
 
 h1,
@@ -174,7 +230,6 @@ p {
 
 .btn:hover {
   color: var(--bg-dark);
-  box-shadow: 0 0 20px rgba(73, 198, 229, 0.4);
 }
 
 .btn-primary {
@@ -204,11 +259,28 @@ p {
 .footer {
   padding: 4rem 0;
   text-align: center;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-subtle);
   background: var(--bg-dark);
 }
 
 .footer p {
-  font-size: 0.9rem;
-  opacity: 0.6;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  opacity: 0.5;
+}
+
+/* Page Transitions */
+.app {
+  opacity: 1;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

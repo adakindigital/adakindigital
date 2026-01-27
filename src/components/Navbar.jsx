@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { gsap } from 'gsap';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,23 +18,50 @@ const Navbar = () => {
   }, []);
 
   const toggleMenu = () => {
-      setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleNavClick = (e, hash) => {
+    setIsMobileMenuOpen(false);
+
+    if (location.pathname !== '/') {
+      e.preventDefault();
+      navigate('/' + hash);
+    }
   };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-content">
-        <div className="logo">Adakin Digital</div>
-        
+        <Link to="/" className="logo">
+          <span className="logo-text">Adakin</span>
+          <span className="logo-dot"></span>
+        </Link>
+
         <div className="mobile-toggle" onClick={toggleMenu}>
-            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </div>
 
         <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
-          <a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
-          <a href="#work" onClick={() => setIsMobileMenuOpen(false)}>Work</a>
-          <a href="#team" onClick={() => setIsMobileMenuOpen(false)}>Team</a>
-          <a href="#contact" className="btn-small" onClick={() => setIsMobileMenuOpen(false)}>Start Project</a>
+          <a
+            href="#products"
+            onClick={(e) => handleNavClick(e, '#products')}
+          >
+            Products
+          </a>
+          <a
+            href="#case-studies"
+            onClick={(e) => handleNavClick(e, '#case-studies')}
+          >
+            Case Studies
+          </a>
+          <a
+            href="#work-with-us"
+            className="btn-small"
+            onClick={(e) => handleNavClick(e, '#work-with-us')}
+          >
+            Work With Us
+          </a>
         </div>
       </div>
     </nav>

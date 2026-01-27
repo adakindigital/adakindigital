@@ -1,17 +1,31 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FaCode, FaMobileAlt, FaServer, FaBug, FaSitemap } from 'react-icons/fa';
 import './Services.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const servicesData = [
-    { icon: <FaCode />, title: 'Custom Software', desc: 'Tailored solutions for complex business problems.' },
-    { icon: <FaMobileAlt />, title: 'Web & Mobile Apps', desc: 'High-performance applications for all devices.' },
-    { icon: <FaServer />, title: 'Backend & API', desc: 'Robust, scalable server-side architectures.' },
-    { icon: <FaBug />, title: 'QA & Automation', desc: 'Rigorous testing strategies for bug-free releases.' },
-    { icon: <FaSitemap />, title: 'System Architecture', desc: 'Future-proof technical planning and consulting.' },
+const methodologyPillars = [
+    {
+        number: '01',
+        title: 'We start with real problems',
+        desc: 'Every product begins with a genuine pain point. We validate the problem exists before writing a single line of code.'
+    },
+    {
+        number: '02',
+        title: 'We validate before we scale',
+        desc: 'Small, testable releases. Real user feedback. We prove concepts work in the market before committing to full builds.'
+    },
+    {
+        number: '03',
+        title: 'We build for longevity',
+        desc: 'Clean architecture, maintainable code, and thoughtful technical decisions. We build systems meant to last years, not months.'
+    },
+    {
+        number: '04',
+        title: 'We operate what we build',
+        desc: 'We run our own products. When something breaks at 2am, we feel it too. That accountability shapes how we engineer.'
+    }
 ];
 
 const Services = () => {
@@ -19,59 +33,40 @@ const Services = () => {
     const cardsRef = useRef([]);
 
     useEffect(() => {
-        const cards = cardsRef.current;
-
-        gsap.fromTo(cards,
-            { y: 100, opacity: 0 },
+        gsap.fromTo(cardsRef.current,
+            { y: 40, opacity: 0 },
             {
                 y: 0,
                 opacity: 1,
-                duration: 1,
-                stagger: 0.15,
+                duration: 0.7,
+                stagger: 0.1,
                 ease: 'power3.out',
                 scrollTrigger: {
                     trigger: sectionRef.current,
-                    start: 'top 85%',
+                    start: 'top 80%',
                 }
             }
         );
-
-        // Mouse Move Glow Effect
-        const handleMouseMove = (e) => {
-            cards.forEach(card => {
-                if (!card) return;
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        };
-
-        document.getElementById('services').addEventListener('mousemove', handleMouseMove);
-
-        return () => {
-            const s = document.getElementById('services');
-            if(s) s.removeEventListener('mousemove', handleMouseMove);
-        };
     }, []);
 
     return (
-        <section id="services" className="section services" ref={sectionRef}>
+        <section id="how-we-work" className="section methodology" ref={sectionRef}>
             <div className="container">
-                <h2 className="section-title">Our Expertise</h2>
-                <div className="services-grid">
-                    {servicesData.map((service, index) => (
+                <div className="methodology-header">
+                    <span className="section-label">How We Work</span>
+                    <h2>Principled by default.</h2>
+                </div>
+                <div className="methodology-grid">
+                    {methodologyPillars.map((pillar, index) => (
                         <div
                             key={index}
-                            className="service-card"
+                            className="methodology-card"
                             ref={el => cardsRef.current[index] = el}
                         >
-                            <div className="service-content">
-                                <div className="service-icon">{service.icon}</div>
-                                <h3>{service.title}</h3>
-                                <p>{service.desc}</p>
+                            <span className="methodology-number">{pillar.number}</span>
+                            <div className="methodology-content">
+                                <h3>{pillar.title}</h3>
+                                <p>{pillar.desc}</p>
                             </div>
                         </div>
                     ))}
