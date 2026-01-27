@@ -51,8 +51,8 @@ const CaseStudies = () => {
         <section id="case-studies" className="section case-studies" ref={sectionRef}>
             <div className="container">
                 <div className="case-studies-header">
-                    <span className="section-label">Case Studies</span>
-                    <h2>Built in the open. Tested in reality.</h2>
+                    <span className="section-label">From Our Lab</span>
+                    <h2>Behind the build.</h2>
                 </div>
                 <div className="case-studies-list">
                     {caseStudies.map((study, index) => (

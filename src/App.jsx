@@ -4,23 +4,26 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import EntryflowCaseStudy from './pages/EntryflowCaseStudy';
 import ComingSoon from './pages/ComingSoon';
+import ContactPopup from './components/ContactPopup';
+import { ContactProvider } from './context/ContactContext';
 import './index.css';
 
 const Footer = () => (
   <footer className="footer">
     <div className="container">
-      <p>&copy; {new Date().getFullYear()} Adakin Digital. Product Studio.</p>
+      <p>&copy; {new Date().getFullYear()} Adakin Digital. Digital Product Agency.</p>
     </div>
   </footer>
 );
 
-function App() {
+function AppContent() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
   return (
     <div className="app">
       <Navbar />
+      <ContactPopup />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -30,6 +33,14 @@ function App() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ContactProvider>
+      <AppContent />
+    </ContactProvider>
   );
 }
 

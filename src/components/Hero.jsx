@@ -25,21 +25,21 @@ const Hero = () => {
                 delay: 0.3
             }
         )
-        .fromTo(subRef.current,
-            { y: 30, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
-            '-=0.6'
-        )
-        .fromTo(ctaRef.current.children,
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power3.out' },
-            '-=0.4'
-        )
-        .fromTo(decorRef.current,
-            { opacity: 0, scale: 0.8 },
-            { opacity: 1, scale: 1, duration: 1, ease: 'power2.out' },
-            '-=0.8'
-        );
+            .fromTo(subRef.current,
+                { y: 30, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
+                '-=0.6'
+            )
+            .fromTo(ctaRef.current.children,
+                { y: 20, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power3.out' },
+                '-=0.4'
+            )
+            .fromTo(decorRef.current,
+                { opacity: 0, scale: 0.8 },
+                { opacity: 1, scale: 1, duration: 1, ease: 'power2.out' },
+                '-=0.8'
+            );
     }, []);
 
     return (
@@ -55,7 +55,7 @@ const Hero = () => {
                     <h1 ref={titleRef}>
                         <span className="title-line">We build and operate</span>
                         <span className="title-line">software products</span>
-                        <span className="title-line title-accent">— not just prototypes.</span>
+                        <span className="title-line title-accent"> not just prototypes.</span>
                     </h1>
 
                     <p ref={subRef} className="hero-sub">

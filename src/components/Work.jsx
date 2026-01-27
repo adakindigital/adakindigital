@@ -49,7 +49,7 @@ const products = [
         statusLabel: 'Research Phase',
         link: '/coming-soon/next-innovation',
         isInternal: true,
-        isPlaceholder: true,
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop',
         accentColor: '#8b5cf6'
     }
 ];
@@ -109,7 +109,7 @@ const Work = () => {
                     <span className="section-label animate-in">Our Products</span>
                     <h2 className="animate-in">Built. Operated. <span className="text-gradient">Proven.</span></h2>
                     <p className="products-intro animate-in">
-                        We don't just build for clients — we build products we believe in and operate ourselves.
+                        We don't just build for clients. We build products we believe in and operate ourselves.
                         This is how we stay sharp.
                     </p>
                 </div>

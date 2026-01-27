@@ -98,7 +98,7 @@
         to top,
         rgba(7, 16, 19, 0.98) 0%,
         rgba(7, 16, 19, 0.7) 40%,
-        rgba(7, 16, 19, 0.3) 100%
+        rgba(7, 16, 19, 0.6) 100%
     );
     transition: opacity 0.3s ease;
 }

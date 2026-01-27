@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useContact } from '../context/ContactContext';
 import './WorkWithUs.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,6 +25,7 @@ const WorkWithUs = () => {
     const sectionRef = useRef(null);
     const contentRef = useRef(null);
     const cardsRef = useRef([]);
+    const { openContactPopup } = useContact();
 
     useEffect(() => {
         gsap.fromTo(contentRef.current,
@@ -61,10 +63,11 @@ const WorkWithUs = () => {
             <div className="container">
                 <div className="work-with-us-content" ref={contentRef}>
                     <span className="section-label">Work With Us</span>
-                    <h2>Selective partnerships, not high volume.</h2>
+                    <h2>Selective by design. Audited for success.</h2>
                     <p className="work-with-us-intro">
-                        We don't take on many projects. When we do, we act like partners — not vendors.
-                        We're looking for teams with ambitious problems and the patience to solve them properly.
+                        We don't just take on any project. We partner with visionaries.
+                        Our process starts with a deep audit to ensure your idea is ready to drive technology forward.
+                        If we work together, it's because we believe we can build something exceptional.
                     </p>
                 </div>
 
@@ -82,9 +85,9 @@ const WorkWithUs = () => {
                 </div>
 
                 <div className="work-with-us-cta">
-                    <a href="mailto:hello@adakindigital.com" className="btn btn-primary">
+                    <button onClick={openContactPopup} className="btn btn-primary">
                         Start a conversation
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>

@@ -34,8 +34,8 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-content">
         <Link to="/" className="logo">
+          <img src="/adakin-logo.svg" alt="" className="logo-icon" />
           <span className="logo-text">Adakin</span>
-          <span className="logo-dot"></span>
         </Link>
 
         <div className="mobile-toggle" onClick={toggleMenu}>
@@ -53,7 +53,7 @@ const Navbar = () => {
             href="#case-studies"
             onClick={(e) => handleNavClick(e, '#case-studies')}
           >
-            Case Studies
+            From Our Lab
           </a>
           <a
             href="#work-with-us"

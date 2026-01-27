@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FiArrowLeft, FiExternalLink, FiCheck, FiZap, FiLayers, FiBarChart2 } from 'react-icons/fi';
+import { useContact } from '../context/ContactContext';
 import './EntryflowCaseStudy.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -41,6 +42,7 @@ const capabilities = [
 const EntryflowCaseStudy = () => {
   const heroRef = useRef(null);
   const contentRef = useRef(null);
+  const { openContactPopup } = useContact();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -143,7 +145,7 @@ const EntryflowCaseStudy = () => {
               <p>
                 Traditional form builders create functional but forgettable experiences.
                 Event organizers needed a way to collect attendee data that matched the
-                quality of their events — professional, engaging, and memorable.
+                quality of their events. Professional, engaging, and memorable.
               </p>
               <p>
                 We built Entryflow from scratch as a response to this gap: a platform
@@ -226,10 +228,9 @@ const EntryflowCaseStudy = () => {
             <span className="section-label">Built With</span>
             <h2>Modern stack, production-ready</h2>
             <div className="cs-tech-grid">
-              <div className="cs-tech-item">Next.js 16</div>
-              <div className="cs-tech-item">React 19</div>
+              <div className="cs-tech-item">Next.js</div>
+              <div className="cs-tech-item">React</div>
               <div className="cs-tech-item">TypeScript</div>
-              <div className="cs-tech-item">Supabase</div>
               <div className="cs-tech-item">TailwindCSS</div>
               <div className="cs-tech-item">Framer Motion</div>
             </div>
@@ -248,9 +249,9 @@ const EntryflowCaseStudy = () => {
               >
                 Try Entryflow <FiExternalLink />
               </a>
-              <Link to="/#work-with-us" className="btn">
+              <button onClick={openContactPopup} className="btn">
                 Build something similar
-              </Link>
+              </button>
             </div>
           </div>
         </div>
