@@ -143,6 +143,19 @@ ul {
   background: currentColor;
 }
 
+.status-badge {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.status-badge:hover {
+  transform: scale(1.05);
+}
+
+.status-badge:active {
+  transform: scale(0.98);
+}
+
 .status-live {
   color: var(--status-live);
   border-color: rgba(34, 197, 94, 0.3);

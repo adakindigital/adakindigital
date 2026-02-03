@@ -1,0 +1,11 @@
+.footer-year {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 0.25rem;
+    margin: -0.25rem;
+    border-radius: 2px;
+}
+
+.footer-year:hover {
+    color: var(--color-primary);
+}

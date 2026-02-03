@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import Work from '../components/Work';
 import Services from '../components/Services';
 import CaseStudies from '../components/CaseStudies';
+import Consulting from '../components/Consulting';
 import WorkWithUs from '../components/WorkWithUs';
 
 const HomePage = () => {
@@ -36,6 +37,7 @@ const HomePage = () => {
       <Work />
       <Services />
       <CaseStudies />
+      <Consulting />
       <WorkWithUs />
     </>
   );

@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { useContact } from '../context/ContactContext';
+import Tooltip from './Tooltip';
 import './Hero.css';
 
 const Hero = () => {
@@ -8,6 +10,7 @@ const Hero = () => {
     const subRef = useRef(null);
     const ctaRef = useRef(null);
     const decorRef = useRef(null);
+    const { openContactPopup } = useContact();
 
     useEffect(() => {
         const tl = gsap.timeline();
@@ -42,6 +45,20 @@ const Hero = () => {
             );
     }, []);
 
+    const scrollToProducts = () => {
+        const productsSection = document.getElementById('products');
+        if (productsSection) {
+            productsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const orbitDotContent = (
+        <>
+            <p>You found me. This dot pulses because we never stop working. Like, ever. Send help.</p>
+            <span className="tooltip-hint">Easter egg 1 of 5</span>
+        </>
+    );
+
     return (
         <section className="hero" ref={heroRef}>
             <div className="hero-bg">
@@ -54,13 +71,13 @@ const Hero = () => {
                 <div className="hero-text">
                     <h1 ref={titleRef}>
                         <span className="title-line">We build and operate</span>
-                        <span className="title-line">software products</span>
+                        <span className="title-line">software</span>
                         <span className="title-line title-accent"> not just prototypes.</span>
                     </h1>
 
                     <p ref={subRef} className="hero-sub">
-                        Adakin is a product studio. We create platforms we believe in,
-                        operate them ourselves, and partner with ambitious teams building
+                        Adakin is a Software Development studio. We create platforms,
+                        operate them ourselves, and partner with teams building
                         for the long term.
                     </p>
 
@@ -75,12 +92,19 @@ const Hero = () => {
                         <div className="orbit-ring"></div>
                         <div className="orbit-ring"></div>
                         <div className="orbit-ring"></div>
-                        <div className="orbit-dot"></div>
+                        <Tooltip
+                            content={orbitDotContent}
+                            actionText="Wanna work with us yet?"
+                            onAction={openContactPopup}
+                            position="left"
+                        >
+                            <div className="orbit-dot orbit-dot-interactive"></div>
+                        </Tooltip>
                     </div>
                 </div>
             </div>
 
-            <div className="hero-scroll-indicator">
+            <div className="hero-scroll-indicator" onClick={scrollToProducts}>
                 <span>Scroll to explore</span>
                 <div className="scroll-line"></div>
             </div>

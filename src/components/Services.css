@@ -40,6 +40,21 @@
     opacity: 0.7;
     flex-shrink: 0;
     padding-top: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin: -0.25rem -0.5rem;
+}
+
+.methodology-number:hover {
+    opacity: 1;
+    background: rgba(73, 198, 229, 0.1);
+}
+
+.methodology-number.revealed {
+    opacity: 1;
+    color: var(--color-primary-light);
 }
 
 .methodology-content {

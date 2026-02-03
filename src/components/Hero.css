@@ -152,6 +152,19 @@
     z-index: 2;
 }
 
+.orbit-dot-interactive {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.orbit-dot-interactive:hover {
+    transform: translate(-50%, -50%) scale(1.3);
+}
+
+.orbit-dot-interactive:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
 @keyframes ripple-out {
     0% {
         transform: translate(-50%, -50%) scale(0);
@@ -202,6 +215,16 @@
     text-transform: uppercase;
     letter-spacing: 0.15em;
     opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.hero-scroll-indicator:hover {
+    opacity: 1;
+}
+
+.hero-scroll-indicator:hover .scroll-line {
+    background: linear-gradient(to bottom, var(--color-primary-light), transparent);
 }
 
 .scroll-line {

@@ -56,6 +56,12 @@ const Navbar = () => {
             From Our Lab
           </a>
           <a
+            href="#consulting"
+            onClick={(e) => handleNavClick(e, '#consulting')}
+          >
+            Consulting
+          </a>
+          <a
             href="#work-with-us"
             className="btn-small"
             onClick={(e) => handleNavClick(e, '#work-with-us')}
