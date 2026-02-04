@@ -128,7 +128,7 @@ const EntryflowCaseStudy = () => {
             <h2>See it in action</h2>
             <div className="cs-video-wrapper">
               <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src="https://www.youtube.com/embed/gavvvbJG56w?rel=0&modestbranding=1&iv_load_policy=3"
                 title="Entryflow Demo"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
