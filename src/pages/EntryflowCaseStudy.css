@@ -137,7 +137,7 @@
   margin-bottom: 1.5rem;
 }
 
-.cs-section > p {
+.cs-section>p {
   font-size: 1.125rem;
   line-height: 1.8;
   color: var(--text-secondary);
@@ -259,6 +259,14 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-secondary);
+}
+
+.cs-screenshot-mockup {
+  min-height: 400px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
 }
 
 .cs-screenshot-item p {

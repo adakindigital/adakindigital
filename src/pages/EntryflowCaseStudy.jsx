@@ -93,11 +93,6 @@ const EntryflowCaseStudy = () => {
             </div>
 
             <h1 className="cs-title animate-in">
-              <img
-                src="/products/entryflow-logo.svg"
-                alt="Entryflow"
-                className="cs-logo"
-              />
               Entryflow
             </h1>
 
@@ -183,31 +178,7 @@ const EntryflowCaseStudy = () => {
             </div>
           </div>
 
-          {/* Screenshots Section */}
-          <div className="cs-section">
-            <span className="section-label">Platform Screens</span>
-            <h2>Designed with intention</h2>
-            <div className="cs-screenshots">
-              <div className="cs-screenshot-item">
-                <div className="cs-screenshot-placeholder">
-                  <span>Form Builder Interface</span>
-                </div>
-                <p>Intuitive drag-and-drop form creation</p>
-              </div>
-              <div className="cs-screenshot-item">
-                <div className="cs-screenshot-placeholder">
-                  <span>Respondent View</span>
-                </div>
-                <p>Cinematic full-screen survey experience</p>
-              </div>
-              <div className="cs-screenshot-item">
-                <div className="cs-screenshot-placeholder">
-                  <span>Analytics Dashboard</span>
-                </div>
-                <p>Real-time response tracking and insights</p>
-              </div>
-            </div>
-          </div>
+
 
           {/* Capabilities */}
           <div className="cs-section">

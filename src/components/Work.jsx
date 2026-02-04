@@ -11,8 +11,8 @@ gsap.registerPlugin(ScrollTrigger);
 const products = [
     {
         title: 'Entryflow',
-        tagline: 'Customer onboarding & conversion infrastructure',
-        desc: 'A platform that transforms how businesses capture and convert leads through intelligent, cinematic survey experiences.',
+        tagline: 'The most elegant way to collect data',
+        desc: 'Cinematic survey experiences designed for events. Professional data collection that delights respondents and drives completion rates.',
         status: 'live',
         statusLabel: 'Live',
         link: '/case-study/entryflow',
