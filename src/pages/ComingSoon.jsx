@@ -14,7 +14,7 @@ const productInfo = {
   tradetrackr: {
     name: 'Tradetrackr',
     tagline: 'Trading insights & execution tools',
-    description: 'Advanced trade logging and performance analytics designed specifically for day traders. Make smarter decisions with data-driven insights.',
+    description: 'Advanced trade logging, performance analytics and AI coaching designed specifically for day traders. Make smarter decisions with data-driven insights.',
     color: '#f59e0b'
   },
   'next-innovation': {
