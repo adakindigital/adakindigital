@@ -76,7 +76,7 @@ const Hero = () => {
                     </h1>
 
                     <p ref={subRef} className="hero-sub">
-                        Adakin is a Software Development studio. We create platforms,
+                        Adakin Digital is a Software Development studio. We create platforms,
                         operate them ourselves, and partner with teams building
                         for the long term.
                     </p>

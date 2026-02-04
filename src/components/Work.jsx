@@ -34,7 +34,7 @@ const products = [
     {
         title: 'Tradetrackr',
         tagline: 'Trading insights & execution tools',
-        desc: 'Advanced trade logging and performance analytics designed specifically for day traders.',
+        desc: 'Advanced trade logging, performance analytics and AI coaching designed specifically for day traders.',
         status: 'dev',
         statusLabel: 'In Development',
         link: '/coming-soon/tradetrackr',
