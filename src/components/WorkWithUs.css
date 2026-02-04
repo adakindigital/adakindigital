@@ -1,0 +1,74 @@
+.work-with-us {
+    background-color: var(--bg-dark);
+}
+
+.work-with-us-content {
+    margin-bottom: 4rem;
+    max-width: 700px;
+}
+
+.work-with-us-content h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.work-with-us-intro {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.engagement-card {
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.engagement-card:hover {
+    border-color: var(--border-color);
+}
+
+.engagement-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.engagement-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.work-with-us-cta {
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+    .engagement-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .engagement-card {
+        padding: 1.5rem;
+    }
+
+    .work-with-us-cta {
+        justify-content: center;
+    }
+}

@@ -1,57 +1,39 @@
-import React, { useEffect } from 'react';
-import Lenis from 'lenis';
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import TechCapabilities from './components/TechCapabilities';
-import Work from './components/Work';
-import Team from './components/Team';
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import EntryflowCaseStudy from './pages/EntryflowCaseStudy';
+import ComingSoon from './pages/ComingSoon';
+import ContactPopup from './components/ContactPopup';
+import { ContactProvider } from './context/ContactContext';
 import './index.css';
 
-const Footer = () => (
-  <footer style={{ padding: '4rem 0', textAlign: 'center', borderTop: '1px solid #222', color: '#666' }}>
-    <div className="container">
-      <p>&copy; {new Date().getFullYear()} Adakin Digital. All rights reserved.</p>
-    </div>
-  </footer>
-);
-
-function App() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      smoothTouch: false,
-      touchMultiplier: 2,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
+function AppContent() {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   return (
     <div className="app">
       <Navbar />
+      <ContactPopup />
       <main>
-        <Hero />
-        <Services />
-        <TechCapabilities />
-        <Work />
-        <Team />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/case-study/entryflow" element={<EntryflowCaseStudy />} />
+          <Route path="/coming-soon/:slug" element={<ComingSoon />} />
+        </Routes>
       </main>
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ContactProvider>
+      <AppContent />
+    </ContactProvider>
   );
 }
 

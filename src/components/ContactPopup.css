@@ -1,0 +1,138 @@
+.contact-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: none;
+    /* Managed by GSAP */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    padding: 1rem;
+}
+
+.contact-popup-modal {
+    background: var(--bg-card);
+    /* Assuming this variable exists, otherwise fallback to #111 */
+    border: 1px solid var(--border-color);
+    /* Assuming variable */
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.contact-popup-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-popup-close:hover {
+    color: var(--text-primary);
+}
+
+.contact-popup-header {
+    margin-bottom: 2rem;
+}
+
+.contact-popup-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #fff, #aaa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-popup-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.contact-popup-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    appearance: none;
+    /* Remove default arrow for custom styling if desired, but standard is fine for now */
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.form-group select option {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.btn.submit-btn {
+    grid-column: 1 / -1;
+    margin-top: 0.5rem;
+    justify-content: center;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .contact-popup-modal {
+        padding: 1.5rem;
+    }
+
+    .contact-popup-form {
+        grid-template-columns: 1fr;
+    }
+}

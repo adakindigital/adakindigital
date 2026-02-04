@@ -1,56 +1,76 @@
 .team-section {
     background-color: var(--bg-dark);
-    padding-bottom: 100px;
+    padding-bottom: 150px;
 }
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
 }
 
 .team-card {
     background: transparent;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-color);
     padding-top: 2rem;
-    transition: border-color 0.3s ease;
-    min-height: 200px; /* Added minimum height for balance */
+    transition: all 0.4s ease;
+    min-height: 220px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
 .team-card:hover {
-    border-color: var(--accent-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-5px);
 }
 
 .member-role {
-    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     color: var(--text-secondary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .member-name {
-    font-size: 1.75rem;
+    font-family: var(--font-heading);
+    font-size: 2rem;
     color: var(--text-primary);
-    margin-bottom: auto; /* Push arrow to bottom if flex */
+    margin-bottom: auto;
 }
 
 /* Social or Detail link arrow */
 .team-link {
     margin-top: 1.5rem;
     display: inline-block;
-    color: var(--accent-primary);
-    font-size: 1.2rem;
+    color: var(--color-primary);
+    font-size: 1.25rem;
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(-15px);
     transition: all 0.3s ease;
 }
 
 .team-card:hover .team-link {
     opacity: 1;
     transform: translateX(0);
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-primary);
+    transition: width 0.4s var(--ease-out-expo);
+    box-shadow: 0 0 10px var(--color-primary);
+}
+
+.team-card:hover::before {
+    width: 100%;
 }
