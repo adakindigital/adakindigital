@@ -27,6 +27,18 @@
   --font-body: 'Inter', sans-serif;
   --font-mono: 'Space Mono', monospace;
 
+  /* Shape and spacing */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --space-section: clamp(80px, 11vw, 140px);
+
+  /* Workflow states */
+  --state-paper: #d9c7a3;
+  --state-warning: #f59e0b;
+  --state-approved: #22c55e;
+
   /* Animation */
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -297,3 +309,15 @@ p {
     opacity: 1;
   }
 }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo); }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 1rem; }
+}
+#scroll-sentinel { position: absolute; top: 0; left: 0; height: 24px; width: 1px; pointer-events: none; }

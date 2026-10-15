@@ -1,0 +1,23 @@
+.page-hero { position: relative; padding: 9rem 0 4rem; overflow: hidden; border-bottom: 1px solid var(--border-subtle); }
+.page-hero__glow { position: absolute; top: -40%; right: -10%; width: 60vw; height: 60vw; max-width: 760px; max-height: 760px; background: radial-gradient(circle, rgba(73, 198, 229, 0.13), transparent 62%); pointer-events: none; }
+.page-hero__inner { position: relative; }
+.page-hero h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.06; letter-spacing: -0.035em; max-width: 900px; animation: hero-in 0.9s var(--ease-out-expo) both; }
+.page-hero__intro { font-size: 1.15rem; color: var(--text-secondary); max-width: 640px; margin-top: 1.4rem; animation: hero-in 0.9s var(--ease-out-expo) 0.12s both; }
+.page-hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.2rem; animation: hero-in 0.9s var(--ease-out-expo) 0.24s both; }
+@keyframes hero-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+.page-section { padding: clamp(64px, 9vw, 112px) 0; }
+.page-section + .page-section { border-top: 1px solid var(--border-subtle); }
+.page-section--card { background: var(--bg-card); }
+.page-section h2 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); margin-bottom: 1.2rem; max-width: 760px; }
+.page-lede { font-size: 1.08rem; color: var(--text-secondary); max-width: 65ch; margin-bottom: 2.5rem; }
+.page-prose { max-width: 70ch; }
+.page-prose h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 2.8rem 0 1rem; }
+.page-prose h3 { font-size: 1.2rem; font-weight: 500; margin: 2rem 0 0.6rem; }
+.page-prose p, .page-prose li { color: var(--text-secondary); margin-bottom: 1rem; }
+.page-prose ul { list-style: none; padding-left: 0; }
+.page-prose ul li { position: relative; padding-left: 1.4rem; }
+.page-prose ul li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 8px; height: 2px; background: var(--color-primary); }
+.page-prose a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; }
+.page-prose a:hover { color: var(--color-primary-light); }
+.page-note { font-size: 0.85rem; color: var(--text-secondary); padding: 1rem 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); background: rgba(255, 255, 255, 0.02); }

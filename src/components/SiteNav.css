@@ -1,0 +1,33 @@
+.site-nav { position: fixed; inset: 0 0 auto; z-index: 1000; padding: 1.4rem 0; transition: padding 0.3s var(--ease-in-out), background 0.3s ease, border-color 0.3s ease; border-bottom: 1px solid transparent; }
+.site-nav--scrolled, .site-nav--open { padding: 0.8rem 0; background: rgba(7, 16, 19, 0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom-color: var(--border-subtle); }
+.site-nav__inner { display: flex; align-items: center; gap: 2rem; }
+.site-nav__logo { display: flex; align-items: center; gap: 0.55rem; font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em; }
+.site-nav__logo img { height: 22px; filter: brightness(0) saturate(100%) invert(73%) sepia(47%) saturate(651%) hue-rotate(152deg) brightness(93%) contrast(91%); transition: transform 0.4s var(--ease-out-expo); }
+.site-nav__logo:hover img { transform: rotate(-12deg) scale(1.08); }
+.site-nav__links { display: flex; align-items: center; gap: 0.25rem; margin-left: auto; }
+.site-nav__link { position: relative; padding: 0.5rem 0.8rem; font-size: 0.9rem; color: var(--text-secondary); background: none; border: 0; font-family: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem; border-radius: var(--radius-sm); transition: color 0.2s ease, background 0.2s ease; }
+.site-nav__link:hover, .site-nav__link.active { color: var(--text-primary); background: rgba(255, 255, 255, 0.04); }
+.site-nav__link.active::after { content: ''; position: absolute; left: 0.8rem; right: 0.8rem; bottom: 0.15rem; height: 2px; background: var(--color-primary); border-radius: 2px; }
+.site-nav__dropdown { position: relative; }
+.site-nav__trigger svg { transition: transform 0.25s ease; }
+.site-nav__dropdown:hover .site-nav__trigger svg, .site-nav__dropdown:focus-within .site-nav__trigger svg { transform: rotate(180deg); }
+.site-nav__menu { position: absolute; top: calc(100% + 0.5rem); left: -0.5rem; width: 320px; padding: 0.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.2s ease, transform 0.25s var(--ease-out-expo), visibility 0.2s; }
+.site-nav__dropdown:hover .site-nav__menu, .site-nav__dropdown:focus-within .site-nav__menu { opacity: 1; visibility: visible; transform: none; }
+.site-nav__menu-item { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.8rem 0.9rem; border-radius: var(--radius-md); transition: background 0.2s ease; }
+.site-nav__menu-item strong { font-family: var(--font-heading); font-weight: 500; }
+.site-nav__menu-item span { font-size: 0.8rem; color: var(--text-secondary); }
+.site-nav__menu-item:hover, .site-nav__menu-item.active { background: rgba(73, 198, 229, 0.08); }
+.site-nav__toggle { display: none; margin-left: auto; background: none; border: 1px solid var(--border-subtle); color: var(--text-primary); width: 42px; height: 42px; border-radius: var(--radius-md); font-size: 1.2rem; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.2s ease; }
+.site-nav__toggle:hover { border-color: var(--border-glow); }
+.site-nav__mobile { display: none; }
+
+@media (max-width: 1080px) {
+  .site-nav__links, .site-nav__cta { display: none; }
+  .site-nav__toggle { display: inline-flex; }
+  .site-nav__mobile { display: flex; flex-direction: column; gap: 0.2rem; position: fixed; top: 66px; left: 0; right: 0; bottom: 0; padding: 1.5rem 1rem 2rem; background: var(--bg-dark); overflow-y: auto; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity 0.25s ease, transform 0.3s var(--ease-out-expo), visibility 0.25s; }
+  .site-nav--open .site-nav__mobile { opacity: 1; visibility: visible; transform: none; }
+  .site-nav__mobile a:not(.ui-button) { font-family: var(--font-heading); font-size: 1.35rem; padding: 0.55rem 0; color: var(--text-primary); border-bottom: 1px solid var(--border-subtle); }
+  .site-nav__mobile a.active { color: var(--color-primary); }
+  .site-nav__mobile .section-label { margin: 1.4rem 0 0.4rem; }
+  .site-nav__mobile .ui-button { margin-top: 1.8rem; }
+}
