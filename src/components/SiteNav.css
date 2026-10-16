@@ -1,5 +1,7 @@
 .site-nav { position: fixed; inset: 0 0 auto; z-index: 1000; padding: 1.4rem 0; transition: padding 0.3s var(--ease-in-out), background 0.3s ease, border-color 0.3s ease; border-bottom: 1px solid transparent; }
 .site-nav--scrolled, .site-nav--open { padding: 0.8rem 0; background: rgba(7, 16, 19, 0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom-color: var(--border-subtle); }
+/* backdrop-filter makes the nav the containing block for the fixed mobile drawer, shrinking it to the bar's height. */
+.site-nav--open { background: var(--bg-dark); backdrop-filter: none; -webkit-backdrop-filter: none; }
 .site-nav__inner { display: flex; align-items: center; gap: 2rem; }
 .site-nav__logo { display: flex; align-items: center; gap: 0.55rem; font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.03em; }
 .site-nav__logo img { height: 22px; filter: brightness(0) saturate(100%) invert(73%) sepia(47%) saturate(651%) hue-rotate(152deg) brightness(93%) contrast(91%); transition: transform 0.4s var(--ease-out-expo); }
